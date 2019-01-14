@@ -1,0 +1,12 @@
+Package: pbzip2-dbgsym
+Source: pbzip2
+Version: 1.1.9-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Installed-Size: 31
+Depends: pbzip2 (= 1.1.9-1)
+Section: debug
+Priority: optional
+Description: debug symbols for pbzip2
+Build-Ids: 7a37ace03604f57de1fd4fa9423526f10fd08b9c

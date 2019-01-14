@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Tue, 09 Sep 2014 06:13:02 +0100
+Source: pbzip2
+Binary: pbzip2
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64
+Version: 1.1.9-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Changed-By: Anibal Monsalve Salazar <anibal@debian.org>
+Description:
+ pbzip2     - parallel bzip2 implementation
+Changes:
+ pbzip2 (1.1.9-1) unstable; urgency=medium
+ .
+   * New upstream version 1.1.9.
+     Changes in 1.1.9 (Apr 13, 2014)
+     - Makefile refinements
+     - close redirected stdout on finish for better AFS/NFS support
+       (bug #1300876)
+     - Fix printf format vs actual type misalignments (#1236086)
+   * Standards-Version: 3.9.5.
+   * Use default compression for binary packages.
+   * Refresh patches.
+Checksums-Sha1:
+ 76e14d41d8e585129f1d5f99abaa925b33d73719 6172 pbzip2-dbgsym_1.1.9-1_amd64.deb
+ 37402e8eb0915c7db4438cf32f9c1f480f61ed30 5403 pbzip2_1.1.9-1_amd64.buildinfo
+ 571fe80449e19ee4891dfa71b505c45241e52b5b 55016 pbzip2_1.1.9-1_amd64.deb
+Checksums-Sha256:
+ 5eeacbbcb711aab3cdb0fef699e3b501cc0206dee2bf438159c0cb1d79fd0f40 6172 pbzip2-dbgsym_1.1.9-1_amd64.deb
+ 5f83cae2363a791145f09a67f69b149556c793b5d925f441eddeb0838c7a89d4 5403 pbzip2_1.1.9-1_amd64.buildinfo
+ 70d18ffe94e1b81c3195cb539e48115266cbd0e549352c18993248b07da4f39f 55016 pbzip2_1.1.9-1_amd64.deb
+Files:
+ 66122964b5be20d5a6c56f8c8a8d5019 6172 debug optional pbzip2-dbgsym_1.1.9-1_amd64.deb
+ 262b9632c6c806c0684ca253290d0616 5403 utils optional pbzip2_1.1.9-1_amd64.buildinfo
+ e039fa68d609779231eb064beb37e19f 55016 utils optional pbzip2_1.1.9-1_amd64.deb

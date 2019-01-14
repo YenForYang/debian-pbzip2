@@ -1,0 +1,585 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package pbzip2
+dpkg-buildpackage: info: source version 1.1.9-1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Anibal Monsalve Salazar <anibal@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+[ ! -f Makefile ] || /usr/bin/make clean
+make[1]: Entering directory '/dev/shm/pbzip2/pbzip2-1.1.9'
+rm -f *.o pbzip2
+make[1]: Leaving directory '/dev/shm/pbzip2/pbzip2-1.1.9'
+dh_clean 
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f debian/pbzip2.debhelper.log
+	rm -f -- debian/pbzip2.substvars debian/files
+	rm -fr -- debian/pbzip2/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=215823789 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh_testdir
+touch configure-stamp
+dh_testdir
+/usr/bin/make CFLAGS="-g -O2 -fdebug-prefix-map=/dev/shm/pbzip2/pbzip2-1.1.9=. -Wformat -march=native -pipe -Wformat-security -Wall -O2 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2" LDFLAGS=" -lbz2 -lpthread"
+make[1]: Entering directory '/dev/shm/pbzip2/pbzip2-1.1.9'
+icpc.pl -O2 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_STACKSIZE_CUSTOMIZATION -pthread -D_POSIX_PTHREAD_SEMANTICS -lbz2 -lpthread pbzip2.cpp BZ2StreamScanner.cpp ErrorContext.cpp -o pbzip2 -lbz2 -lpthread
+In file included from pbzip2.cpp(59):
+BZ2StreamScanner.h(75): remark #869: parameter "orig" was never referenced
+  	BZ2StreamScanner( const BZ2StreamScanner& orig ) {}
+  	                                          ^
+
+pbzip2.cpp(139): remark #1419: external declaration in primary source file
+  inline int syncGetProducerDone();
+             ^
+
+pbzip2.cpp(140): remark #1419: external declaration in primary source file
+  inline void syncSetProducerDone(int newValue);
+              ^
+
+pbzip2.cpp(141): remark #1419: external declaration in primary source file
+  inline int syncGetTerminateFlag();
+             ^
+
+pbzip2.cpp(142): remark #1419: external declaration in primary source file
+  inline void syncSetTerminateFlag(int newValue);
+              ^
+
+pbzip2.cpp(143): remark #1419: external declaration in primary source file
+  inline void syncSetFinishedFlag(int newValue);
+              ^
+
+pbzip2.cpp(144): remark #1419: external declaration in primary source file
+  inline void syncSetLastGoodBlock(int newValue, int errBlock);
+              ^
+
+pbzip2.cpp(145): remark #1419: external declaration in primary source file
+  inline int syncGetLastGoodBlock();
+             ^
+
+pbzip2.cpp(146): remark #1419: external declaration in primary source file
+  void cleanupUnfinishedWork();
+       ^
+
+pbzip2.cpp(147): remark #1419: external declaration in primary source file
+  void cleanupAndQuit(int exitCode);
+       ^
+
+pbzip2.cpp(148): remark #1419: external declaration in primary source file
+  int initSignalMask();
+      ^
+
+pbzip2.cpp(149): remark #1419: external declaration in primary source file
+  int setupSignalHandling();
+      ^
+
+pbzip2.cpp(150): remark #1419: external declaration in primary source file
+  int setupTerminator();
+      ^
+
+pbzip2.cpp(152): remark #1419: external declaration in primary source file
+  inline void safe_mutex_lock(pthread_mutex_t *mutex);
+              ^
+
+pbzip2.cpp(153): remark #1419: external declaration in primary source file
+  inline void safe_mutex_unlock(pthread_mutex_t *mutex);
+              ^
+
+pbzip2.cpp(154): remark #1419: external declaration in primary source file
+  inline void safe_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
+              ^
+
+pbzip2.cpp(155): remark #1419: external declaration in primary source file
+  inline void safe_cond_signal(pthread_cond_t *cond);
+              ^
+
+pbzip2.cpp(156): remark #1419: external declaration in primary source file
+  int safe_cond_timed_wait(pthread_cond_t *cond, pthread_mutex_t *mutex, int seconds, const char *caller = "safe_cond_timed_wait");
+      ^
+
+pbzip2.cpp(159): remark #1419: external declaration in primary source file
+  FI1 memstr(FI1 searchBuf, int searchBufSize, FI2 searchString, int searchStringSize);
+      ^
+
+pbzip2.cpp(160): remark #1419: external declaration in primary source file
+  int producer_decompress(int, OFF_T, queue *);
+      ^
+
+pbzip2.cpp(161): remark #1419: external declaration in primary source file
+  int directcompress(int, OFF_T, int, const char *);
+      ^
+
+pbzip2.cpp(162): remark #1419: external declaration in primary source file
+  int directdecompress(const char *, const char *);
+      ^
+
+pbzip2.cpp(163): remark #1419: external declaration in primary source file
+  int producer(int hInfile, int blockSize, queue *fifo);
+      ^
+
+pbzip2.cpp(164): remark #1419: external declaration in primary source file
+  int mutexesInit();
+      ^
+
+pbzip2.cpp(165): remark #1419: external declaration in primary source file
+  void mutexesDelete();
+       ^
+
+pbzip2.cpp(166): remark #1419: external declaration in primary source file
+  queue *queueInit(int);
+         ^
+
+pbzip2.cpp(167): remark #1419: external declaration in primary source file
+  void queueDelete(queue *);
+       ^
+
+pbzip2.cpp(168): remark #1419: external declaration in primary source file
+  void outputBufferInit(size_t size);
+       ^
+
+pbzip2.cpp(169): remark #1419: external declaration in primary source file
+  outBuff * outputBufferAdd(const outBuff & element, const char *caller);
+            ^
+
+pbzip2.cpp(170): remark #1419: external declaration in primary source file
+  outBuff * outputBufferSeqAddNext(outBuff * preveElement, outBuff * newElement);
+            ^
+
+pbzip2.cpp(171): remark #1419: external declaration in primary source file
+  inline size_t getOutputBufferPos(int blockNum);
+                ^
+
+pbzip2.cpp(172): remark #1419: external declaration in primary source file
+  int getFileMetaData(const char *);
+      ^
+
+pbzip2.cpp(173): remark #1419: external declaration in primary source file
+  int writeFileMetaData(const char *);
+      ^
+
+pbzip2.cpp(174): remark #1419: external declaration in primary source file
+  int testBZ2ErrorHandling(int, BZFILE *, int);
+      ^
+
+pbzip2.cpp(175): remark #1419: external declaration in primary source file
+  int testCompressedData(char *);
+      ^
+
+pbzip2.cpp(176): remark #1419: external declaration in primary source file
+  ssize_t bufread(int hf, char *buf, size_t bsize);
+          ^
+
+pbzip2.cpp(177): remark #1419: external declaration in primary source file
+  int detectCPUs(void);
+      ^
+
+pbzip2.cpp(179): remark #1419: external declaration in primary source file
+  inline bool isIgnoredTrailingGarbage();
+              ^
+
+pbzip2.cpp(180): remark #1419: external declaration in primary source file
+  int waitForPreviousBlock(int blockNumToWait, int errBlockNumber);
+      ^
+
+pbzip2.cpp(181): remark #1419: external declaration in primary source file
+  inline int getLastGoodBlockBeforeErr(int errBlockNumber, int outSequenceNumber);
+             ^
+
+pbzip2.cpp(182): remark #1419: external declaration in primary source file
+  inline int issueDecompressError(int bzret, const outBuff * fileData,
+             ^
+
+pbzip2.cpp(185): remark #1419: external declaration in primary source file
+  int decompressErrCheckSingle(int bzret, const outBuff * fileData,
+      ^
+
+pbzip2.cpp(188): remark #1419: external declaration in primary source file
+  int decompressErrCheck(int bzret, const outBuff * fileData,
+      ^
+
+pbzip2.cpp(190): remark #1419: external declaration in primary source file
+  inline bool hasTrailingGarbage(int bzret, const outBuff * fileData,
+              ^
+
+pbzip2.cpp(192): remark #1419: external declaration in primary source file
+  int producerDecompressCheckInterrupt(int hInfile, outBuff *& fileData, int lastBlock);
+      ^
+
+pbzip2.cpp(202): remark #1419: external declaration in primary source file
+  void* signalHandlerProc(void* arg);
+        ^
+
+pbzip2.cpp(203): remark #1419: external declaration in primary source file
+  void* terminatorThreadProc(void* arg);
+        ^
+
+pbzip2.cpp(204): remark #1419: external declaration in primary source file
+  void *consumer_decompress(void *);
+        ^
+
+pbzip2.cpp(205): remark #1419: external declaration in primary source file
+  void *fileWriter(void *);
+        ^
+
+pbzip2.cpp(206): remark #1419: external declaration in primary source file
+  void *consumer(void *);
+        ^
+
+pbzip2.cpp(380): remark #1418: external function definition with no prior declaration
+  int safe_open_output(const char *path)
+      ^
+
+pbzip2.cpp(394): remark #1418: external function definition with no prior declaration
+  FILE *safe_fopen_output(const char *path, const char *mode)
+        ^
+
+pbzip2.cpp(470): remark #1418: external function definition with no prior declaration
+  int do_remove(const char* pathname)
+      ^
+
+pbzip2.cpp(486): remark #1418: external function definition with no prior declaration
+  bool check_file_exists( const char * filename )
+       ^
+
+pbzip2.cpp(708): remark #869: parameter "blockNumToWait" was never referenced
+  int waitForPreviousBlock(int blockNumToWait, int errBlockNumber)
+                               ^
+
+pbzip2.cpp(977): remark #1418: external function definition with no prior declaration
+  int initChildThreadAttributes()
+      ^
+
+pbzip2.cpp(1093): remark #869: parameter "arg" was never referenced
+  void* terminatorThreadProc(void* arg)
+                                   ^
+
+pbzip2.cpp(1131): remark #869: parameter "arg" was never referenced
+  void* signalHandlerProc(void* arg)
+                                ^
+
+pbzip2.cpp(1201): remark #869: parameter "lastBlock" was never referenced
+  int producerDecompressCheckInterrupt(int hInfile, outBuff *& fileData, int lastBlock)
+                                                                             ^
+
+pbzip2.cpp(1240): remark #869: parameter "fileSize" was never referenced
+  int producer_decompress(int hInfile, OFF_T fileSize, queue *fifo)
+                                             ^
+
+pbzip2.cpp(1347): remark #1418: external function definition with no prior declaration
+  int consumerDecompressCheckInterrupt(const outBuff * lastElement)
+      ^
+
+pbzip2.cpp(1647): remark #111: statement is unreachable
+  	return (NULL);
+  	^
+
+pbzip2.cpp(1839): remark #2259: non-pointer conversion from "double" to "int" may lose significant bits
+  				percentComplete = (100.0 * (double)bytesProcessed / (double)InFileSize);
+  				                ^
+
+pbzip2.cpp(2684): remark #111: statement is unreachable
+  	return (NULL);
+  	^
+
+pbzip2.cpp(2948): remark #869: parameter "caller" was never referenced
+  outBuff * outputBufferAdd(const outBuff & element, const char *caller)
+                                                                 ^
+
+pbzip2.cpp(3060): remark #593: variable "nread" was set but never used
+  	int bzerr, nread, streamNo;
+  	           ^
+
+pbzip2.cpp(3270): remark #1418: external function definition with no prior declaration
+  void banner()
+       ^
+
+pbzip2.cpp(3282): remark #1418: external function definition with no prior declaration
+  void usage(char* progname, const char *reason)
+       ^
+
+pbzip2.cpp(3707): remark #2259: non-pointer conversion from "int" to "unsigned char" may lose significant bits
+  	Bz2HeaderZero[3] = '0' + BWTblockSize;
+  	                 ^
+
+pbzip2.cpp(4014): remark #981: operands are evaluated in unspecified order
+  				outFilename.resize( outFilename.size() - bz2Tail.size() );
+  				                                       ^
+
+pbzip2.cpp(4018): remark #981: operands are evaluated in unspecified order
+  				outFilename.resize( outFilename.size() - tbz2Tail.size() );
+  				                                       ^
+
+pbzip2.h(347): remark #981: operands are evaluated in unspecified order
+  	int ti = str.size() - suffix.size();
+  	                    ^
+
+pbzip2.h(357): remark #981: operands are evaluated in unspecified order
+  		if ( ::tolower( str[ti] ) != ::tolower( suffix[si] ) )
+  		                          ^
+
+pbzip2.cpp(92): remark #593: variable "QUEUESIZE" was set but never used
+  static int QUEUESIZE = 2;
+             ^
+
+In file included from BZ2StreamScanner.cpp(9):
+BZ2StreamScanner.h(75): remark #869: parameter "orig" was never referenced
+  	BZ2StreamScanner( const BZ2StreamScanner& orig ) {}
+  	                                          ^
+
+BZ2StreamScanner.cpp(195): remark #981: operands are evaluated in unspecified order
+  		memcpy( getOutBuffEnd(), getInBuffCurrent(), additionSize );
+  		                         ^
+
+BZ2StreamScanner.cpp(195): remark #981: operands are evaluated in unspecified order
+  		memcpy( getOutBuffEnd(), getInBuffCurrent(), additionSize );
+  		^
+
+BZ2StreamScanner.cpp(217): remark #383: value copied to temporary, reference to temporary used
+  	size_t maxCapacity = std::max( getOutBuffCapacityLimit(), _outBuffCapacity );
+  	                               ^
+
+BZ2StreamScanner.cpp(232): remark #981: operands are evaluated in unspecified order
+  		end1 = std::min( getInBuffSearchPtr(), getInBuffEnd() - ( getHeaderSize() - 1 ) );
+  		                                                      ^
+
+BZ2StreamScanner.cpp(232): remark #981: operands are evaluated in unspecified order
+  		end1 = std::min( getInBuffSearchPtr(), getInBuffEnd() - ( getHeaderSize() - 1 ) );
+  		                                       ^
+
+BZ2StreamScanner.cpp(232): remark #383: value copied to temporary, reference to temporary used
+  		end1 = std::min( getInBuffSearchPtr(), getInBuffEnd() - ( getHeaderSize() - 1 ) );
+  		                 ^
+
+BZ2StreamScanner.cpp(232): remark #383: value copied to temporary, reference to temporary used
+  		end1 = std::min( getInBuffSearchPtr(), getInBuffEnd() - ( getHeaderSize() - 1 ) );
+  		                                       ^
+
+BZ2StreamScanner.cpp(232): remark #981: operands are evaluated in unspecified order
+  		end1 = std::min( getInBuffSearchPtr(), getInBuffEnd() - ( getHeaderSize() - 1 ) );
+  		       ^
+
+BZ2StreamScanner.cpp(248): remark #981: operands are evaluated in unspecified order
+  	_inBuffSearchPtr = getInBuffEnd() - ( _bz2Header.size() - 1 );
+  	                                  ^
+
+BZ2StreamScanner.cpp(260): remark #981: operands are evaluated in unspecified order
+  	int tailSize = getInBuffEnd() - getInBuffSearchPtr();
+  	                              ^
+
+BZ2StreamScanner.cpp(269): remark #981: operands are evaluated in unspecified order
+  	std::copy( getInBuffSearchPtr(), getInBuffEnd(), getInBuffBegin() );
+  	                                 ^
+
+BZ2StreamScanner.cpp(269): remark #981: operands are evaluated in unspecified order
+  	std::copy( getInBuffSearchPtr(), getInBuffEnd(), getInBuffBegin() );
+  	^
+
+BZ2StreamScanner.cpp(300): remark #981: operands are evaluated in unspecified order
+  	if ( getInBuffSize() >= getInBuffCapacity() )
+  	                     ^
+
+BZ2StreamScanner.cpp(305): remark #981: operands are evaluated in unspecified order
+  					 getInBuffSize(), getInBuffCapacity() );
+  					                  ^
+
+BZ2StreamScanner.cpp(302): remark #981: operands are evaluated in unspecified order
+  		handle_error( EF_EXIT, -1,
+  		^
+
+BZ2StreamScanner.cpp(312): remark #981: operands are evaluated in unspecified order
+  						 getInBuffCapacity() - getInBuffSize() );
+  						                     ^
+
+BZ2StreamScanner.cpp(312): remark #981: operands are evaluated in unspecified order
+  						 getInBuffCapacity() - getInBuffSize() );
+  						 ^
+
+BZ2StreamScanner.cpp(311): remark #981: operands are evaluated in unspecified order
+  	int bytesRead = do_read( _hInFile, getInBuffEnd(),
+  	                ^
+
+BZ2StreamScanner.cpp(358): remark #981: operands are evaluated in unspecified order
+  		if ( ( getInBuffSearchPtr() != getInBuffBegin() ) ||
+  		                            ^
+
+BZ2StreamScanner.cpp(359): remark #981: operands are evaluated in unspecified order
+  			( getInBuffSize() < _bz2Header.size() ) )
+  			                  ^
+
+BZ2StreamScanner.cpp(376): remark #981: operands are evaluated in unspecified order
+  		_inBuffSearchPtr = std::search( getInBuffSearchPtr(), getInBuffEnd(),
+  		                                                      ^
+
+BZ2StreamScanner.cpp(376): remark #981: operands are evaluated in unspecified order
+  		_inBuffSearchPtr = std::search( getInBuffSearchPtr(), getInBuffEnd(),
+  		                   ^
+
+BZ2StreamScanner.cpp(416): remark #981: operands are evaluated in unspecified order
+  	while ( !failed() && ( getUnsearchedCount() >= getHeaderSize() ) )
+  	                                            ^
+
+BZ2StreamScanner.cpp(421): remark #981: operands are evaluated in unspecified order
+  		if ( getInBuffSearchPtr()[hsp] == _bz2Header[hsp] )
+  		                               ^
+
+BZ2StreamScanner.cpp(428): remark #981: operands are evaluated in unspecified order
+  		else if ( getInBuffSearchPtr()[hsp] == _bz2HeaderZero[hsp] )
+  		                                    ^
+
+BZ2StreamScanner.cpp(445): remark #981: operands are evaluated in unspecified order
+  						getInBuffSearchPtr() + hsp, pHdr->size() - hsp );
+  						^
+
+BZ2StreamScanner.cpp(444): remark #981: operands are evaluated in unspecified order
+  				int cmpres = pHdr->compare( hsp, pHdr->size() - hsp,
+  				                   ^
+
+BZ2StreamScanner.cpp(610): remark #981: operands are evaluated in unspecified order
+  	if ( ( getInBuffCurrent() == getInBuffEnd() ) && eof() )
+  	                          ^
+
+BZ2StreamScanner.cpp(621): remark #981: operands are evaluated in unspecified order
+  	if ( ( getInBuffCurrent() == getInBuffSearchPtr() ) ||
+  	                          ^
+
+BZ2StreamScanner.cpp(626): remark #981: operands are evaluated in unspecified order
+  		_inBuffSearchPtr = std::min( getInBuffSearchPtr() + _bz2Header.size(),
+  		                                                  ^
+
+BZ2StreamScanner.cpp(627): remark #981: operands are evaluated in unspecified order
+  								 getInBuffEnd() );
+  								 ^
+
+BZ2StreamScanner.cpp(626): remark #383: value copied to temporary, reference to temporary used
+  		_inBuffSearchPtr = std::min( getInBuffSearchPtr() + _bz2Header.size(),
+  		                             ^
+
+BZ2StreamScanner.cpp(627): remark #383: value copied to temporary, reference to temporary used
+  								 getInBuffEnd() );
+  								 ^
+
+BZ2StreamScanner.cpp(626): remark #981: operands are evaluated in unspecified order
+  		_inBuffSearchPtr = std::min( getInBuffSearchPtr() + _bz2Header.size(),
+  		                   ^
+
+BZ2StreamScanner.cpp(656): remark #981: operands are evaluated in unspecified order
+  	else if ( getInBuffCurrent() != getInBuffSearchPtr() )
+  	                             ^
+
+BZ2StreamScanner.cpp(666): remark #981: operands are evaluated in unspecified order
+  	if ( getInBuffCurrent() == getInBuffSearchPtr() )
+  	                        ^
+
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_icpcEWgiah.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[1]: Leaving directory '/dev/shm/pbzip2/pbzip2-1.1.9'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+	rm -f -- debian/pbzip2.substvars
+	rm -fr -- debian/.debhelper/generated/pbzip2/ debian/pbzip2/ debian/tmp/
+dh_installdirs
+	install -d debian/pbzip2
+	install -d debian/pbzip2/usr/bin
+#/usr/bin/make install DESTDIR=/dev/shm/pbzip2/pbzip2-1.1.9/debian/pbzip2
+mv pbzip2 /dev/shm/pbzip2/pbzip2-1.1.9/debian/pbzip2/usr/bin
+dh_testdir
+dh_testroot
+dh_installchangelogs ChangeLog
+	install -d debian/pbzip2/usr/share/doc/pbzip2
+	install -p -m0644 debian/changelog debian/pbzip2/usr/share/doc/pbzip2/changelog.Debian
+	install -p -m0644 ChangeLog debian/pbzip2/usr/share/doc/pbzip2/changelog
+dh_installdocs
+	install -d debian/.debhelper/generated/pbzip2
+	install -p -m0644 debian/copyright debian/pbzip2/usr/share/doc/pbzip2/copyright
+dh_installexamples
+dh_installman pbzip2.1
+dh_link
+dh_strip
+	install -d debian/.debhelper/pbzip2/dbgsym-root/usr/lib/debug/.build-id/7a
+	objcopy --only-keep-debug --compress-debug-sections debian/pbzip2/usr/bin/pbzip2 debian/.debhelper/pbzip2/dbgsym-root/usr/lib/debug/.build-id/7a/37ace03604f57de1fd4fa9423526f10fd08b9c.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/pbzip2/dbgsym-root/usr/lib/debug/.build-id/7a/37ace03604f57de1fd4fa9423526f10fd08b9c.debug
+	chown 0:0 -- debian/.debhelper/pbzip2/dbgsym-root/usr/lib/debug/.build-id/7a/37ace03604f57de1fd4fa9423526f10fd08b9c.debug
+	strip --remove-section=.comment --remove-section=.note debian/pbzip2/usr/bin/pbzip2
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/pbzip2/dbgsym-root/usr/lib/debug/.build-id/7a/37ace03604f57de1fd4fa9423526f10fd08b9c.debug debian/pbzip2/usr/bin/pbzip2
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/pbzip2/dbgsym-root/usr/share/doc
+	ln -s pbzip2 debian/.debhelper/pbzip2/dbgsym-root/usr/share/doc/pbzip2-dbgsym
+dh_compress
+	cd debian/pbzip2
+	chmod a-x usr/share/doc/pbzip2/changelog usr/share/doc/pbzip2/changelog.Debian
+	gzip -9nf usr/share/doc/pbzip2/changelog usr/share/doc/pbzip2/changelog.Debian
+	cd '/dev/shm/pbzip2/pbzip2-1.1.9'
+dh_fixperms
+	find debian/pbzip2 -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/pbzip2 ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/pbzip2/usr/share/doc -type f -a -true -a ! -regex 'debian/pbzip2/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/pbzip2/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/pbzip2 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/pbzip2/usr/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+dh_installdeb
+	install -d debian/pbzip2/DEBIAN
+dh_shlibdeps
+	dpkg-shlibdeps -Tdebian/pbzip2.substvars debian/pbzip2/usr/bin/pbzip2
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dh_gencontrol
+	echo misc:Depends= >> debian/pbzip2.substvars
+	echo misc:Pre-Depends= >> debian/pbzip2.substvars
+	install -d debian/.debhelper/pbzip2/dbgsym-root/DEBIAN
+	dpkg-gencontrol -ppbzip2 -ldebian/changelog -Tdebian/pbzip2.substvars -Pdebian/.debhelper/pbzip2/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=pbzip2-dbgsym "-DDepends=pbzip2 (= \${binary:Version})" "-DDescription=debug symbols for pbzip2" -DBuild-Ids=7a37ace03604f57de1fd4fa9423526f10fd08b9c -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	chmod 0644 -- debian/.debhelper/pbzip2/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/pbzip2/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -ppbzip2 -ldebian/changelog -Tdebian/pbzip2.substvars -Pdebian/pbzip2 -UMulti-Arch
+	chmod 0644 -- debian/pbzip2/DEBIAN/control
+	chown 0:0 -- debian/pbzip2/DEBIAN/control
+dh_md5sums
+	cd debian/pbzip2 >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/pbzip2/DEBIAN/md5sums
+	chown 0:0 -- debian/pbzip2/DEBIAN/md5sums
+	cd debian/.debhelper/pbzip2/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/pbzip2/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/pbzip2/dbgsym-root/DEBIAN/md5sums
+dh_builddeb
+	dpkg-deb --build debian/pbzip2 ..
+	dpkg-deb --build debian/.debhelper/pbzip2/dbgsym-root ..
+dpkg-deb: building package 'pbzip2' in '../pbzip2_1.1.9-1_amd64.deb'.
+dpkg-deb: building package 'pbzip2-dbgsym' in '../pbzip2-dbgsym_1.1.9-1_amd64.deb'.
+FAKEROOTKEY=1292056210 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../pbzip2_1.1.9-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian pbzip2_1.1.9-1_amd64.changes ...
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: pbzip2: hardening-no-pie usr/bin/pbzip2
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: pbzip2: binary-without-manpage usr/bin/pbzip2
+W: pbzip2-dbgsym: debug-file-with-no-debug-symbols usr/lib/debug/.build-id/7a/37ace03604f57de1fd4fa9423526f10fd08b9c.debug
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+Finished running lintian.
